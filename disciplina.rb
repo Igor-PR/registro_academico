@@ -5,7 +5,7 @@ class Disciplina
     @nome = nome
     @cargahoraria = cargahoraria
     @valor = valor
-    puts "Nova disciplina criada: \nCódigo = #{@codigo}\nNome = #{@nome}\nCarga Horária = #{@cargahoraria}\nValor = #{@valor}" 
+    puts "Nova disciplina criada: \nCódigo = #{@codigo}\nNome = #{@nome}Carga Horária = #{@cargahoraria}\nValor = #{@valor}" 
   end
 
   def getCodigo
@@ -32,6 +32,10 @@ class Disciplina
   end
   def setValor(valor)
     @valor = valor
+  end
+
+  def listar
+    puts "Lista de disciplinas"
   end
 
 end
