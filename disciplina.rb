@@ -1,4 +1,8 @@
 class Disciplina
+  attr_accessor :codigo
+  attr_accessor :nome
+  attr_accessor :cargahoraria
+  attr_accessor :valor
 
   def initialize(codigo,nome,cargahoraria,valor)
     @codigo = codigo
@@ -8,34 +12,8 @@ class Disciplina
     puts "Nova disciplina criada: \nCódigo = #{@codigo}\nNome = #{@nome}Carga Horária = #{@cargahoraria}\nValor = #{@valor}" 
   end
 
-  def getCodigo
-    puts "#{@codigo}"
-  end
-  def getNome
-    puts "#{@nome}"
-  end
-  def getCargaHoraria
-    puts "#{@cargahoraria}"
-  end
-  def getValor
-    puts "#{@valor}"
-  end
-
-  def setCodigo(codigo)
-    @codigo = codigo
-  end
-  def setNome(nome)
-    @nome = nome
-  end
-  def setCargaHoraria(cargahoraria)
-    @cargahoraria = cargahoraria
-  end
-  def setValor(valor)
-    @valor = valor
-  end
-
-  def listar
-    puts "Lista de disciplinas"
+  def imprime
+    puts "Código = #{@codigo}\tNome = #{@nome}\tCarga Horária = #{@cargahoraria}\tValor = #{@valor}"
   end
 
 end
