@@ -73,7 +73,10 @@ def disciplina
 			puts "\nListar Disciplinas"
 			if ($lista_disciplinas.size == 0)
 				puts "Não há disciplinas cadastradas"
+			else
+				$lista_disciplinas.each { |disciplina| disciplina.imprime() }
 			end
+			
 		when 2
 			puts "\nAdicionar Disciplina"
 			puts "Digite o código da disciplina"
@@ -114,15 +117,15 @@ menu()
 #EXEMPLO DE COMO USAR UMA CLASSE
 #p = Aluno.new("Rafael",10.0,"raframil@gmail.com","Ciência da computação")
 
-# p.setNome("MUDEI")
-# p.setRA(1.0)
-# p.setEmail("MUDEI@gmail.com")
-# p.setCurso("MUDEI da computação")
+# p.nome = "Mudei aqui"
+# p.ra = 1.0
+# p.email = mudeiaqui@gmail.com
+# p.curso = "mudei daqui tambem"
 
-# p.getNome
-# p.getRA
-# p.getEmail
-# p.getCurso
+# p.nome
+# p.ra
+# p.email
+# p.curso
 
 # lista = Array.new
 # lista << p
