@@ -10,8 +10,11 @@ class Aluno
     @ra = ra
     @email = email
     @curso = curso
-    puts "Novo aluno criado: \nNome = #{@nome}\nRA = #{@ra}\nEmail = #{@email}\nCurso = #{@curso}" 
+    puts "Novo aluno criado: \nNome = #{@nome}\nRA = #{@ra}\nEmail = #{@email}\nCurso = #{@curso}"
+  end
+
+  def imprime
+    puts "Nome = #{@nome}\tRA = #{@ra}\tEmail = #{@email}\tCurso = #{@curso}"
   end
 
 end
-
