@@ -50,36 +50,43 @@ def menuDisciplina(lista_disciplinas)
 			lista_disciplinas.each{|disciplina|
 				if disciplina.nome == procura || disciplina.codigo == procura.to_i
 					puts "\nDisciplina Encontrada!\n"
-					lista_disciplinas.delete(disciplina)
+					# lista_disciplinas.delete(disciplina)
 
 					puts "\nAlterar Disciplina"
 					puts "Digite o código da disciplina"
-					codigo = gets.to_i
+					disciplina.codigo = gets.to_i
 					puts "Digite o nome da disciplina"
-					nome = gets
+					disciplina.nome = gets
 					puts "Digite a carga horária da disciplina"
-					cargahoraria = gets.to_i
+					disciplina.cargahoraria = gets.to_i
 					puts "Digite o valor da disciplina"
-					valor = gets.to_i
+					disciplina.valor = gets.to_i
 
-					disciplina = Disciplina.new(codigo,nome,cargahoraria,valor)
-					lista_disciplinas << disciplina
+					# disciplina = Disciplina.new(codigo,nome,cargahoraria,valor)
+					# lista_disciplinas << disciplina
 					break
 				end
-			}	
+			}
 
 		when 4
 			puts "\nRemover Disciplina"
 			puts "Digite código ou nome da disciplina"
 			procura = gets
 
-			lista_disciplinas.each{|disciplina|
-				if disciplina.nome == procura || disciplina.codigo == procura.to_i
-					lista_disciplinas.delete(disciplina)
-					puts "Disciplina Removida!\n\n"
-					break
-				end
-			}
+			begin
+        raise lista_disciplinas.delete(disciplina)
+        puts "Disciplina Removida!\n\n"
+      rescue
+          puts "Disciplina não está na lista"
+      end
+
+			# lista_disciplinas.each{|disciplina|
+			# 	if disciplina.nome == procura || disciplina.codigo == procura.to_i
+			# 		lista_disciplinas.delete(disciplina)
+			# 		puts "Disciplina Removida!\n\n"
+			# 		break
+			# 	end
+			# }
 
 		when 5
 			puts "\nVoltar"

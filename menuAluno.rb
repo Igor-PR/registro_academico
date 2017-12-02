@@ -49,35 +49,36 @@ def menuAluno(lista_alunos)
 			lista_alunos.each{|aluno|
 				if aluno.nome == procura || aluno.ra == procura
 					puts "\nAluno Encontrada!\n"
-					lista_alunos.delete(aluno)
-
           puts "Digite o nome da aluno"
-    			nome = gets
+    			aluno.nome = gets
     			puts "Digite o RA da aluno"
-    			ra = gets
+    			aluno.ra = gets
     			puts "Digite o email"
-    			email = gets
+    			aluno.email = gets
     			puts "Digite o curso do aluno"
-    			curso = gets
-
-    			aluno = Aluno.new(nome,ra,email,curso)
-    			lista_alunos << aluno
+    			aluno.curso = gets
 					break
 				end
 			}
 
 		when 4
-			puts "\nRemover Aluno"
-			puts "Digite o ra ou nome da aluno"
-			procura = gets
+  		puts "\nRemover Aluno"
+  		puts "Digite o ra ou nome da aluno"
+  		procura = gets
+      begin
+        raise lista_alunos.delete(aluno)
+        puts "Aluno Removido!\n\n"
+      rescue
+          puts "Aluno não está na lista"
+      end
 
-			lista_alunos.each{|aluno|
-				if aluno.nome == procura || aluno.ra == procura
-					lista_alunos.delete(aluno)
-					puts "Aluno Removido!\n\n"
-					break
-				end
-			}
+			# lista_alunos.each{|aluno|
+			# 	if aluno.nome == procura || aluno.ra == procura
+			# 		lista_alunos.delete(aluno)
+			# 		puts "Aluno Removido!\n\n"
+			# 		break
+			# 	end
+			# }
 
 		when 5
 			puts "\nVoltar"
