@@ -27,10 +27,29 @@
 				end
 			when 2
 				puts "Adicionar curso"
+				puts "Digite o nome: "
+				nome = gets
+				puts "Digite o código: "
+				codigo = gets
+				puts "Digite a duracao: "
+				duracao = gets
+				curso = curso.new(nome, codigo, duracao)
+				listaCursos << curso
+				puts "Curso adicionado!"
 			when 3
-				puts "Alterar curso"
+				#To Do
+
+
 			when 4
-				puts "Remover Curso"
+				puts "Curso a ser removido: "
+				curso = gets
+				begin
+        			raise listaCursos.delete(curso)
+        			puts "Disciplina Removida!\n\n"
+      			rescue
+          			puts "Disciplina não está na lista"
+      			end
+
 			when 5
 				puts "Voltar"
 			else
