@@ -1,13 +1,25 @@
 class Matricula
   attr_accessor :codigo
-  attr_accessor :aluno
   attr_accessor :periodo
+  attr_accessor :valor
+  attr_accessor :listaDisciplinas
 
-  def initialize(numero,aluno,periodo)
+  def initialize(numero,periodo,listaDisciplinas)
     @codigo = codigo
-    @aluno = aluno
     @periodo = periodo
-    puts "Nova disciplina criada: \nCodigo = #{@codigo}\nAluno = #{@aluno}\nPeríodo = #{@periodo}" 
+    @listaDisciplinas = listaDisciplinas
+    @valor = 0
+    calculaValor()
+    puts "Nova matrícula criada criada: \nCodigo = #{@codigo}\nAluno = #{@aluno}\nPeríodo = #{@periodo}" 
+  end
+
+  def imprime()
+    puts "Codigo = #{@codigo}\nAluno = #{@aluno}\nPeriodo = #{@periodo}\nDisciplinas matriculadas = "
+    listaDisciplinas.each { |disciplina| puts disciplina.imprime()}
+  end
+
+  def calculaValor()
+    listaDisciplinas.each { |disciplina| @valor += disciplina.valor}
   end
 
 end

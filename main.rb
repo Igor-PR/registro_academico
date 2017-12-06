@@ -1,3 +1,4 @@
+load "registro.rb"
 load "aluno.rb"
 load "disciplina.rb"
 load "curso.rb"
@@ -5,6 +6,7 @@ load "matricula.rb"
 
 load "menuDisciplina.rb"
 load "menuAluno.rb"
+load "menuCurso.rb"
 
 def menu
 
@@ -38,6 +40,7 @@ def menu
 			menuAluno($lista_alunos)
 		when 3
 			puts "\nAcessar menu Cursos"
+			menuCurso($lista_cursos)
 		when 4
 		 	puts "\nAcessar menu Matrícula"
 		when 5
