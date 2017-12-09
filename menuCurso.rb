@@ -43,16 +43,15 @@ def menuCurso(lista_Cursos)
 			nome = gets
 			puts "Digite o codigo do curso: "
 			codigo = gets.to_i
-			procura = Curso.new(codigo, nome, 0)
 			encontrou = false
 			lista_Cursos.each {|curso|
-				if (curso == procura)
+				if (curso.codigo == codigo || curso.nome == nome)
 					puts "Curso encontrado!"
-					puts "Digite o nome: "
+					puts "Digite o novo nome: "
 					curso.nome = gets
-					puts "Digite o codigo: "
-					curso.codigo = gets
-					puts "Digite a duracao: "
+					puts "Digite o novo codigo: "
+					curso.codigo = gets.to_i
+					puts "Digite a nova duracao: "
 					curso.duracao = gets
 					puts "Dados alterados com sucesso!"
 					encontrou = true
