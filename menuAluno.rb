@@ -29,9 +29,9 @@ def menuAluno(lista_alunos)
 
 		when 2
 			puts "\nAdicionar Aluno"
-      puts "Digite o nome da aluno"
+      puts "Digite o nome do aluno"
 			nome = gets
-			puts "Digite o RA da aluno"
+			puts "Digite o RA do aluno"
 			ra = gets
 			puts "Digite o email"
 			email = gets
@@ -39,20 +39,19 @@ def menuAluno(lista_alunos)
 			curso = gets
 
 			aluno = Aluno.new(nome,ra,email,curso)
-			puts "Novo aluno criado: " + aluno.imprime
 			lista_alunos << aluno
 
 		when 3
 			puts "\nAlterar Aluno"
-			puts "Digite o ra ou nome da aluno"
+			puts "Digite o ra ou nome do aluno"
 			procura = gets
 
 			lista_alunos.each{|aluno|
 				if aluno.nome == procura || aluno.ra == procura
 					puts "\nAluno Encontrada!\n"
-        			puts "Digite o nome da aluno"
+        			puts "Digite o nome do aluno"
     				aluno.nome = gets
-					puts "Digite o RA da aluno"
+					puts "Digite o RA do aluno"
 					aluno.ra = gets
 					puts "Digite o email"
 					aluno.email = gets
