@@ -44,9 +44,9 @@ def menuDisciplina(lista_disciplinas)
 
 		when 3
 			puts "\nAlterar Disciplina"
-			puts "Digite código ou nome da disciplina"
+			puts "Digite nome da disciplina ou codigo da disciplina: "
 			procura = gets
-
+			encontrado = false
 			lista_disciplinas.each{|disciplina|
 				if disciplina.nome == procura || disciplina.codigo == procura.to_i
 					puts "\nDisciplina Encontrada!\n"
@@ -61,32 +61,28 @@ def menuDisciplina(lista_disciplinas)
 					disciplina.cargahoraria = gets.to_i
 					puts "Digite o valor da disciplina"
 					disciplina.valor = gets.to_i
-
-					# disciplina = Disciplina.new(codigo,nome,cargahoraria,valor)
-					# lista_disciplinas << disciplina
+					encontrada = true
 					break
 				end
 			}
 
+			if encontrada == false
+				puts "Item não encontrado."
+			end
+
 		when 4
 			puts "\nRemover Disciplina"
-			puts "Digite código ou nome da disciplina"
-			procura = gets
-
+			puts "Digite o nome da disciplina: "
+			nome = gets
+			puts "Digite o codigo da disciplina: "
+			codigo = gets
+			disciplina = Disciplina.new(codigo, nome, 0, 0) #0 e 0 para cumprir o construtor
 			begin
-        raise lista_disciplinas.delete(disciplina)
-        puts "Disciplina Removida!\n\n"
-      rescue
-          puts "Disciplina não está na lista"
-      end
-
-			# lista_disciplinas.each{|disciplina|
-			# 	if disciplina.nome == procura || disciplina.codigo == procura.to_i
-			# 		lista_disciplinas.delete(disciplina)
-			# 		puts "Disciplina Removida!\n\n"
-			# 		break
-			# 	end
-			# }
+				lista_disciplinas.delete(disciplina) { raise NotFoundError }
+				puts "Disciplina excluída."
+			rescue NotFoundError => e
+				puts e.message
+			end
 
 		when 5
 			puts "\nVoltar"

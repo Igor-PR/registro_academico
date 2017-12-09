@@ -6,11 +6,10 @@ class Disciplina < Registro
     @cargahoraria = cargahoraria
     @valor = valor
     super(codigo, nome)
-    puts "Nova disciplina criada: \nCódigo = #{@codigo}\nNome = #{@nome}Carga Horária = #{@cargahoraria}\nValor = #{@valor}" 
   end
 
   def imprime
-    puts "Código = #{@codigo}\tNome = #{@nome}\tCarga Horária = #{@cargahoraria}\tValor = #{@valor}"
+    puts "Código: #{@codigo}\tNome: #{@nome}\tCarga Horária: #{@cargahoraria}\tValor: #{@valor}"
   end
 
 end
