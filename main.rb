@@ -46,7 +46,7 @@ def menu
 			menuCurso($lista_cursos)
 		when 4
 		 	puts "\nAcessar menu Matrícula"
-			menuMatricula($lista_matriculas)
+			menuMatricula($lista_matriculas, $lista_disciplinas, $lista_alunos, $lista_cursos)
 		when 5
 		 	puts "\nTchau! :)"
 		 	exit
@@ -58,7 +58,6 @@ def menu
 
 end
 
-
 #vetores globais
 $lista_disciplinas = Array.new
 $lista_alunos = Array.new
@@ -67,24 +66,3 @@ $lista_matricular = Array.new
 
 #começo do código
 menu()
-
-
-#EXEMPLO DE COMO USAR UMA CLASSE
-#p = Aluno.new("Rafael",10.0,"raframil@gmail.com","Ciência da computação")
-
-# p.nome = "Mudei aqui"
-# p.ra = 1.0
-# p.email = mudeiaqui@gmail.com
-# p.curso = "mudei daqui tambem"
-
-# p.nome
-# p.ra
-# p.email
-# p.curso
-
-# lista = Array.new
-# lista << p
-
-# puts "Tamanho da lista=", lista.size
-
-# puts lista[0].
