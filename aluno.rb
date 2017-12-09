@@ -12,13 +12,14 @@ class Aluno
     @email = email
     @curso = curso
     @matricula = NIL
-    puts "Novo aluno criado: \nNome = #{@nome}\nRA = #{@ra}\nEmail = #{@email}\nCurso = #{@curso}"
   end
 
   def imprime
     puts "Nome = #{@nome}\tRA = #{@ra}\tEmail = #{@email}\tCurso = #{@curso}"
   end
 
-  
+  def == (other)
+    other.ra == @ra && other.nome == @nome 
+  end
 
 end

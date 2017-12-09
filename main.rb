@@ -4,6 +4,8 @@ load "disciplina.rb"
 load "curso.rb"
 load "matricula.rb"
 
+load "notfounderror.rb"
+
 load "menuDisciplina.rb"
 load "menuAluno.rb"
 load "menuCurso.rb"

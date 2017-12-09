@@ -39,6 +39,7 @@ def menuAluno(lista_alunos)
 			curso = gets
 
 			aluno = Aluno.new(nome,ra,email,curso)
+			puts "Novo aluno criado: " + aluno.imprime
 			lista_alunos << aluno
 
 		when 3
@@ -49,36 +50,31 @@ def menuAluno(lista_alunos)
 			lista_alunos.each{|aluno|
 				if aluno.nome == procura || aluno.ra == procura
 					puts "\nAluno Encontrada!\n"
-          puts "Digite o nome da aluno"
-    			aluno.nome = gets
-    			puts "Digite o RA da aluno"
-    			aluno.ra = gets
-    			puts "Digite o email"
-    			aluno.email = gets
-    			puts "Digite o curso do aluno"
-    			aluno.curso = gets
+        			puts "Digite o nome da aluno"
+    				aluno.nome = gets
+					puts "Digite o RA da aluno"
+					aluno.ra = gets
+					puts "Digite o email"
+					aluno.email = gets
+					puts "Digite o curso do aluno"
+					aluno.curso = gets
 					break
 				end
 			}
 
 		when 4
-  		puts "\nRemover Aluno"
-  		puts "Digite o ra ou nome da aluno"
-  		procura = gets
-      begin
-        raise lista_alunos.delete(aluno)
-        puts "Aluno Removido!\n\n"
-      rescue
-          puts "Aluno não está na lista"
-      end
-
-			# lista_alunos.each{|aluno|
-			# 	if aluno.nome == procura || aluno.ra == procura
-			# 		lista_alunos.delete(aluno)
-			# 		puts "Aluno Removido!\n\n"
-			# 		break
-			# 	end
-			# }
+			puts "\nRemover Aluno"
+			puts "Digite o nome do aluno: "
+			nome = gets
+			puts "Digite o RA do aluno: "
+			ra = gets
+			aluno = Aluno.new(nome, ra, "none", "none")
+			begin
+				rm = lista_alunos.delete(aluno) { raise NotFoundError }
+				puts "Aluno excluído."
+			rescue NotFoundError => e
+				puts e.message
+			end
 
 		when 5
 			puts "\nVoltar"
