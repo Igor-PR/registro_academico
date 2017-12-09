@@ -1,3 +1,4 @@
+
 def menuDisciplina(lista_disciplinas)
 
 	menu = 0
@@ -61,12 +62,12 @@ def menuDisciplina(lista_disciplinas)
 					disciplina.cargahoraria = gets.to_i
 					puts "Digite o valor da disciplina"
 					disciplina.valor = gets.to_i
-					encontrada = true
+					encontrado = true
 					break
 				end
 			}
 
-			if encontrada == false
+			if encontrado == false
 				puts "Item não encontrado."
 			end
 
@@ -75,10 +76,10 @@ def menuDisciplina(lista_disciplinas)
 			puts "Digite o nome da disciplina: "
 			nome = gets
 			puts "Digite o codigo da disciplina: "
-			codigo = gets
+			codigo = gets.to_i
 			disciplina = Disciplina.new(codigo, nome, 0, 0) #0 e 0 para cumprir o construtor
 			begin
-				lista_disciplinas.delete(disciplina) { raise NotFoundError }
+				lista_disciplinas.delete(disciplina) { raise NotFoundError.new }
 				puts "Disciplina excluída."
 			rescue NotFoundError => e
 				puts e.message
