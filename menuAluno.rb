@@ -69,7 +69,7 @@ def menuAluno(lista_alunos)
 			ra = gets
 			aluno = Aluno.new(nome, ra, "none", "none")
 			begin
-				rm = lista_alunos.delete(aluno) { raise NotFoundError }
+				rm = lista_alunos.delete(aluno) { raise NotFoundError.new }
 				puts "Aluno excluído."
 			rescue NotFoundError => e
 				puts e.message

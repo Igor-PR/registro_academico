@@ -9,6 +9,8 @@ load "menuAluno.rb"
 load "menuCurso.rb"
 load "menuMatricula.rb"
 
+load "notfounderror.rb"
+
 def menu
 
 	menu = 0

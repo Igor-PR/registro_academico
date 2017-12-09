@@ -70,7 +70,7 @@ def menuCurso(lista_Cursos)
 			codigo = gets.to_i
 			curso = Curso.new(codigo, nome, 0) #duracao 0 apenas para cumprir o construtor
 			begin
-				lista_Cursos.delete(curso) { raise NotFoundError } #se nao existir, retorna o bloco e levanta a excecao
+				lista_Cursos.delete(curso) { raise NotFoundError.new } #se nao existir, retorna o bloco e levanta a excecao
 				puts "Curso excluído."
 			rescue NotFoundError => e
 				puts e.message
