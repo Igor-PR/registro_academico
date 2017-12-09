@@ -32,11 +32,8 @@ def menuCurso(lista_Cursos)
 			puts "Digite o código: "
 			codigo = gets.to_i
 			puts "Digite a duracao: "
-			duracao = gets.to_i
-			curso = Curso.new(codigo, nome, duracao)
-			lista_Cursos << curso
-			puts "Novo curso criado: "
-			curso.imprime
+			disciplina = Disciplina.new(codigo,nome,cargahoraria,valor)
+			lista_disciplinas << disciplina
 		when 3
 			puts "Alterar dados de um curso"
 			puts "Digite o nome do curso: "
@@ -45,7 +42,7 @@ def menuCurso(lista_Cursos)
 			codigo = gets.to_i
 			encontrou = false
 			lista_Cursos.each {|curso|
-				if (curso.codigo == codigo || curso.nome == nome)
+				if (curso.codigo == codigo && curso.nome == nome)
 					puts "Curso encontrado!"
 					puts "Digite o novo nome: "
 					curso.nome = gets
