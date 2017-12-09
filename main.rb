@@ -4,11 +4,10 @@ load "disciplina.rb"
 load "curso.rb"
 load "matricula.rb"
 
-load "notfounderror.rb"
-
 load "menuDisciplina.rb"
 load "menuAluno.rb"
 load "menuCurso.rb"
+load "menuMatricula.rb"
 
 def menu
 
@@ -45,6 +44,7 @@ def menu
 			menuCurso($lista_cursos)
 		when 4
 		 	puts "\nAcessar menu Matrícula"
+			menuMatricula($lista_matriculas)
 		when 5
 		 	puts "\nTchau! :)"
 		 	exit
