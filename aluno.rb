@@ -7,11 +7,7 @@ class Aluno
   attr_accessor :matricula
 
   def initialize(nome,ra,email,curso)
-    @nome = nome
-    @ra = ra
-    @email = email
-    @curso = curso
-    @matricula = NIL
+    @nome, @ra, @email, @curso, @matricula = nome, ra, email, curso, nil
   end
 
   def imprime
