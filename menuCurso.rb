@@ -17,7 +17,7 @@ def menuCurso(lista_Cursos)
 
 		system "clear"
 		#limpar a tela do terminal
-		
+
 		case menu
 		when 1
 			if (lista_Cursos.size == 0)
@@ -90,7 +90,9 @@ def menuCurso(lista_Cursos)
 			}
 			if encontrado
 				puts "Curso atual: #{procura.nome} | #{procura.codigo}"
-				menuDisciplina(procura.disciplinas)
+				puts "Digite o semestre no qual as disciplinas serão alteradas: "
+				semestre = gets.to_i
+				menuDisciplina(procura.disciplinas[semestre -1 ])
 			else
 				puts "Item não encontrado."
 			end
