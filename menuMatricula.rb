@@ -77,44 +77,50 @@ def menuMatricula(lista_matriculas, lista_disciplinas, lista_alunos, lista_curso
 		
 			when 3
 				puts "\nAlterar matrícula"
-				puts "Digite código da matrícula"
-				procura = gets
-	
-				lista_matriculas.each{|matricula|
-					if matricula.codigo == procura.to_i
-						puts "\nMatrícula Encontrada!\n"
-	
-						puts "\nAlterar matrícula"
-						puts "Digite o código da matrícula"
-						matricula.codigo = gets.to_i
-						puts "Digite o nome ou RA do aluno da matrícula"
-						procura = gets
-						lista_alunos.each{|aluno|
-							if aluno.nome == procura|| aluno.ra == procura
-								alunomatriculado = this.aluno
-							end
-						puts "Digite o período da matrícula"
-						matricula.periodo = gets
-						puts "Digite o código das disciplinas da matrícula"
-						puts "Digite 0 quando não houverem mais disciplinas"
-						disciplina = gets
-						i = 0
-						while(disciplina != '0') do
-							listaDisciplinas.each{ |disciplina|
-								if disciplina.codigo == disciplina
-									listaDisciplinas[i] = this.disciplina
-									i = i + 1
+
+				if (lista_matriculas.to_a.size == 0)
+					puts "Não há matrículas cadastradas."
+				else 
+					puts "Digite código da matrícula"
+					procura = gets
+		
+					lista_matriculas.each{|matricula|
+						if matricula.codigo == procura.to_i
+							puts "\nMatrícula Encontrada!\n"
+		
+							puts "\nAlterar matrícula"
+							puts "Digite o código da matrícula"
+							matricula.codigo = gets.to_i
+							puts "Digite o nome ou RA do aluno da matrícula"
+							procura = gets
+							lista_alunos.each{|aluno|
+									if aluno.nome == procura|| aluno.ra == procura
+										alunomatriculado = this.aluno
+									end
+								puts "Digite o período da matrícula"
+								matricula.periodo = gets
+								puts "Digite o código das disciplinas da matrícula"
+								puts "Digite 0 quando não houverem mais disciplinas"
+								disciplina = gets
+								i = 0
+								while(disciplina != '0') do
+									listaDisciplinas.each{ |disciplina|
+										if disciplina.codigo == disciplina
+											listaDisciplinas[i] = this.disciplina
+											i = i + 1
+										end
+			
+									}
 								end
-	
+			
+								valor = calculaValor
+			
+								break
 							}
 						end
-	
-						valor = calculaValor
-	
-						break
 					}
 				end
-			}
+		
 			when 4
 				puts "\nRemover matrícula"
 				puts "Digite código da matrícula"
