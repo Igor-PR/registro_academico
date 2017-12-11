@@ -74,10 +74,10 @@ def menuDisciplina(lista_disciplinas)
 			procura = gets
 
 			begin
-        raise lista_disciplinas.delete(disciplina)
-        puts "Disciplina Removida!\n\n"
-      rescue
-          puts "Disciplina não está na lista"
+				raise lista_disciplinas.delete(disciplina)
+				puts "Disciplina Removida!\n\n"
+			rescue
+				puts "Disciplina não está na lista"
 			end
 
 			# lista_disciplinas.each{|disciplina|
