@@ -35,12 +35,12 @@ def menuAluno(lista_alunos, lista_cursos)
 			ra = gets
 			puts "Digite o email"
 			email = gets
-			puts "Digite o curso do aluno"
+			puts "Digite o nome do curso do aluno"
 			procura = gets
 			
 			encontrou = false
 			lista_cursos.each { |curso|
-				if curso == procura
+				if curso.nome == procura
 					aluno = Aluno.new(nome, ra, email, curso)
 					lista_alunos << aluno
 					encontrou = true
@@ -51,7 +51,7 @@ def menuAluno(lista_alunos, lista_cursos)
 			if encontrou
 				puts "Aluno cadastrado!"
 			else
-				puts "Curso não foi encontrado."
+				puts "A matricula nao pode ser efetuada pois o curso não foi encontrado."
 			end
 
 

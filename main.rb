@@ -41,7 +41,7 @@ def menu
 			menuDisciplina($lista_disciplinas)
 		when 2
 			puts "\nAcessar menu Aluno"
-			menuAluno($lista_alunos)
+			menuAluno($lista_alunos, $lista_cursos)
 		when 3
 			puts "\nAcessar menu Cursos"
 			menuCurso($lista_cursos, $lista_disciplinas)

@@ -11,7 +11,7 @@ class Aluno
   end
 
   def imprime
-    puts "Nome = #{@nome}\tRA = #{@ra}\tEmail = #{@email}\tCurso = #{@curso}"
+    puts "Nome = #{@nome}\tRA = #{@ra}\tEmail = #{@email}\tCurso = #{@curso.nome}"
   end
 
   def == (other)
