@@ -1,4 +1,4 @@
-def menuCurso(lista_Cursos)
+def menuCurso(lista_cursos, lista_disciplinas)
 	menu = 0
 	while(menu != 6) do
 		puts "\nCursos"
@@ -20,10 +20,10 @@ def menuCurso(lista_Cursos)
 
 		case menu
 		when 1
-			if (lista_Cursos.size == 0)
+			if (lista_cursos.size == 0)
 				puts "Não há cursos cadastrados."
 			else
-				lista_Cursos.each {|curso| curso.imprime()}
+				lista_cursos.each {|curso| curso.imprime()}
 			end
 		when 2
 			puts "Adicionar curso"
@@ -34,7 +34,7 @@ def menuCurso(lista_Cursos)
 			puts "Digite a duracao: "
 			duracao = gets.to_i
 			curso = Curso.new(codigo,nome,duracao)
-			lista_Cursos << curso
+			lista_cursos << curso
 		when 3
 			puts "Alterar dados de um curso"
 			puts "Digite o nome do curso: "
@@ -42,7 +42,7 @@ def menuCurso(lista_Cursos)
 			puts "Digite o codigo do curso: "
 			codigo = gets.to_i
 			encontrou = false
-			lista_Cursos.each {|curso|
+			lista_cursos.each {|curso|
 				if (curso.codigo == codigo && curso.nome == nome)
 					puts "Curso encontrado!"
 					puts "Digite o novo nome: "
@@ -67,7 +67,7 @@ def menuCurso(lista_Cursos)
 			codigo = gets.to_i
 			curso = Curso.new(codigo, nome, 0) #duracao 0 apenas para cumprir o construtor
 			begin
-				lista_Cursos.delete(curso) { raise NotFoundError.new } #se nao existir, retorna o bloco e levanta a excecao
+				lista_cursos.delete(curso) { raise NotFoundError.new } #se nao existir, retorna o bloco e levanta a excecao
 				puts "Curso excluído."
 			rescue NotFoundError => e
 				puts e.message
@@ -81,7 +81,7 @@ def menuCurso(lista_Cursos)
 			codigo = gets.to_i
 			procura = Curso.new(codigo, nome, 0)
 			encontrado = false
-			lista_Cursos.each { |curso|
+			lista_cursos.each { |curso|
 				if procura == curso
 					procura = curso
 					encontrado = true
@@ -89,10 +89,11 @@ def menuCurso(lista_Cursos)
 				end
 			}
 			if encontrado
-				puts "Curso atual: #{procura.nome} | #{procura.codigo}"
-				puts "Digite o semestre no qual as disciplinas serão alteradas: "
-				semestre = gets.to_i
-				menuDisciplina(procura.disciplinas[semestre -1 ])
+				menuDisciplinaCurso(procura, lista_disciplinas)
+				#puts "Curso atual: 	#{procura.nome} | #{procura.codigo}"
+				#puts "Digite o semestre no qual as disciplinas serão alteradas: "
+				#semestre = gets.to_i
+				#menuDisciplina(procura.disciplinas[semestre -1 ])
 			else
 				puts "Item não encontrado."
 			end

@@ -1,4 +1,4 @@
-def menuAluno(lista_alunos)
+def menuAluno(lista_alunos, lista_cursos)
   menu = 0
 	while(menu != 5) do
 
@@ -35,11 +35,25 @@ def menuAluno(lista_alunos)
 			ra = gets
 			puts "Digite o email"
 			email = gets
-			puts "Digite o curso do aluno"
-			curso = gets
+			puts "Digite o nome do curso do aluno"
+			procura = gets
+			
+			encontrou = false
+			lista_cursos.each { |curso|
+				if curso.nome == procura
+					aluno = Aluno.new(nome, ra, email, curso)
+					lista_alunos << aluno
+					encontrou = true
+					break
+				end
+			}
 
-			aluno = Aluno.new(nome,ra,email,curso)
-			lista_alunos << aluno
+			if encontrou
+				puts "Aluno cadastrado!"
+			else
+				puts "A matricula nao pode ser efetuada pois o curso não foi encontrado."
+			end
+
 
 		when 3
 			puts "\nAlterar Aluno"
