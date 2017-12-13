@@ -56,7 +56,7 @@ def menuMatricula(lista_matriculas, lista_disciplinas, lista_alunos, lista_curso
 						disciplina = gets
 						i = 0
 						while(disciplina != '0') do
-							listaDisciplinas.each{ |disciplina|
+							lista_disciplinas.each{ |disciplina|
 								if disciplina.codigo == disciplina
 									listaDisciplinas[i] = this.disciplina
 									i += 1
@@ -104,7 +104,7 @@ def menuMatricula(lista_matriculas, lista_disciplinas, lista_alunos, lista_curso
 								disciplina = gets
 								i = 0
 								while(disciplina != '0') do
-									listaDisciplinas.each{ |disciplina|
+									lista_disciplinas.each{ |disciplina|
 										if disciplina.codigo == disciplina
 											listaDisciplinas[i] = this.disciplina
 											i = i + 1
