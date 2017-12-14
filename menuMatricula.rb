@@ -149,8 +149,12 @@ def menuMatricula(lista_matriculas, lista_disciplinas, lista_alunos, lista_curso
 				procura = gets
 
 				begin
-					raise lista_matriculas.delete(matricula)
-					puts "matrícula Removida!\n\n"
+					lista_matriculas.each{ |matricula|
+						if lista_matriculas.codigo == procura
+							raise lista_matriculas.delete(matricula)
+							puts "matrícula Removida!\n\n"
+						end
+					}
 				rescue
 						puts "matrícula não está na lista"
 				end

@@ -4,6 +4,10 @@ class Matricula
   attr_accessor :valor
   attr_accessor :listaDisciplinas
 
+  def calculaValor()
+    listaDisciplinas.each { |disciplina| @valor += disciplina.valor}
+  end
+
   def initialize(numero,periodo,aluno,listaDisciplinas)
     @codigo = codigo
     @periodo = periodo
@@ -19,6 +23,7 @@ class Matricula
     puts "Codigo = #{@codigo}\nAluno = #{@alunoMatriculado}\nPeriodo = #{@periodo}\nDisciplinas matriculadas = "
     listaDisciplinas.each { |disciplina| puts disciplina.imprime()}
   end
+
 
   def calculaValor()
     listaDisciplinas.each { |disciplina| @valor += disciplina.valor}
