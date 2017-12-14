@@ -56,29 +56,25 @@ def menuMatricula(lista_matriculas, lista_disciplinas, lista_alunos, lista_curso
 						periodo = gets
 						puts "Digite o código das disciplinas da matrícula"
 						puts "Digite 0 quando não houverem mais disciplinas"
-						temp = gets
-						i = 0
-						listaDisciplinas = [0]
-						while(temp != "0") do
+						temp = gets.to_i
+						listaDisciplinasMat = Array.new
+						while(temp != 0) do
 							lista_disciplinas.each{ |disciplina|
-								tmp = disciplina.codigo.to_s
-								tmp.strip!
-								if tmp == temp
-									listaDisciplinas[i] = disciplina
-									i += 1
+								if temp == disciplina.codigo
+									listaDisciplinasMat << disciplina
+									flag = 0
+									break;
 								else
 									flag_saida = 1
 									puts "Disciplina não encontrada"
 									break
 								end
 							}
-							temp = gets
-							temp = temp.to_s
-							temp.strip!
+							temp = gets.to_i
 							flag_saida = 0
 						end
 						if flag_saida == 0
-							novaMatricula = Matricula.new(codigo,periodo,alunomatriculado,listaDisciplinas)
+							novaMatricula = Matricula.new(codigo,periodo,alunomatriculado,listaDisciplinasMat)
 							lista_matriculas << novaMatricula
 							break
 						end
