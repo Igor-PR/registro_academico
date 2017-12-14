@@ -12,20 +12,20 @@ class Matricula
     @codigo = codigo
     @periodo = periodo
     @listaDisciplinas = listaDisciplinas
+    @aluno = aluno
     @valor = 0
-    calculaValor()
+    listaDisciplinas.each { |disciplina| @valor += disciplina.valor}
 
-    lista_alunos.each{ |aluno|
-      if aluno.nome == aluno || aluno.ra == aluno
-        @alunoMatriculado = aluno
-      end
-
-    puts "Nova matrícula criada criada: \nCodigo = #{@codigo}\nAluno = #{@alunoMatriculado}\nPeríodo = #{@periodo}"
-  }
+    puts "Nova matrícula criada criada: \nCodigo = #{@codigo}\nAluno = #{@aluno}\nPeríodo = #{@periodo}"
+  end
 
   def imprime()
     puts "Codigo = #{@codigo}\nAluno = #{@alunoMatriculado}\nPeriodo = #{@periodo}\nDisciplinas matriculadas = "
     listaDisciplinas.each { |disciplina| puts disciplina.imprime()}
   end
+
+
+  def calculaValor()
+    listaDisciplinas.each { |disciplina| @valor += disciplina.valor}
   end
 end
