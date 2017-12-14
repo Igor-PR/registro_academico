@@ -49,7 +49,7 @@ def removerDisciplina(curso)
     semestre = gets.to_i - 1 #semestre de 1 a N
     disciplina = Disciplina.new(codigo, nome, 0, 0)
     it = curso.disciplinas[semestre].delete(disciplina)
-    if it == nil
+    if it.class == NilClass
         puts "Disciplina não encontrada!"
     else
         puts "Disciplina excluída."
