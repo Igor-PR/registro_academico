@@ -60,7 +60,6 @@ def menuMatricula(lista_matriculas, lista_disciplinas, lista_alunos, lista_curso
 						i = 0
 						listaDisciplinas = [0]
 						while(temp != "0") do
-							puts "estou no while"
 							lista_disciplinas.each{ |disciplina|
 								tmp = disciplina.codigo.to_s
 								tmp.strip!
@@ -79,8 +78,7 @@ def menuMatricula(lista_matriculas, lista_disciplinas, lista_alunos, lista_curso
 							flag_saida = 0
 						end
 						if flag_saida == 0
-							novaMatricula = 0
-							novaMatricula = novaMatricula.initialize(codigo,periodo,alunomatriculado,listaDisciplinas)
+							novaMatricula = Matricula.new(codigo,periodo,alunomatriculado,listaDisciplinas)
 							lista_matriculas << novaMatricula
 							break
 						end
