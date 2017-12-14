@@ -1,8 +1,8 @@
 def menuMatricula(lista_matriculas, lista_disciplinas, lista_alunos, lista_cursos)
-	
+
 		menu = 0
 		while(menu != 5) do
-	
+
 			puts "\nMatrícula"
 			puts "Digite o número correspondente ao comando desejado"
 			puts "----------------------------------------------------"
@@ -12,13 +12,13 @@ def menuMatricula(lista_matriculas, lista_disciplinas, lista_alunos, lista_curso
 			puts "4 - Remover matrícula"
 			puts "5 - Voltar"
 			puts "----------------------------------------------------"
-	
+
 			menu = gets.to_i
 			#Le um inteiro
-	
+
 			system "clear"
 			#limpar a tela do terminal
-	
+
 			case menu
 			when 1
 				puts "\nListar Matrículas"
@@ -27,7 +27,7 @@ def menuMatricula(lista_matriculas, lista_disciplinas, lista_alunos, lista_curso
 				else
 					lista_matriculas.each { |matricula| matricula.imprime() }
 				end
-	
+
 			when 2
 				puts "\nAdicionar matrícula"
 				if (lista_alunos.to_a.size == 0)
@@ -38,11 +38,14 @@ def menuMatricula(lista_matriculas, lista_disciplinas, lista_alunos, lista_curso
 					puts "Digite o código da matrícula"
 					codigo = gets.to_i
 					puts "Digite o nome ou RA do aluno da matrícula"
-					procura = gets		
-					flag_saida = 0		
+					procura = gets
+					flag_saida = 0
+					alunomatriculado = [0]
 					lista_alunos.each{|aluno|
 						if aluno.nome == procura || aluno.ra == procura
+							alunomatriculado = aluno
 							puts "Aluno encontrado"
+
 						else
 							puts "Aluno não encontrado. A Matricula não pode ser efetuada."
 							flag_saida = 1
@@ -53,91 +56,116 @@ def menuMatricula(lista_matriculas, lista_disciplinas, lista_alunos, lista_curso
 						periodo = gets
 						puts "Digite o código das disciplinas da matrícula"
 						puts "Digite 0 quando não houverem mais disciplinas"
-						disciplina = gets
+						temp = gets
 						i = 0
-						while(disciplina != '0') do
+						listaDisciplinas = [0]
+						while(temp != "0") do
+							puts "estou no while"
 							lista_disciplinas.each{ |disciplina|
-								if disciplina.codigo == disciplina
-									listaDisciplinas[i] = this.disciplina
+								tmp = disciplina.codigo.to_s
+								tmp.strip!
+								if tmp == temp
+									listaDisciplinas[i] = disciplina
 									i += 1
 								else
 									flag_saida = 1
+									puts "Disciplina não encontrada"
 									break
 								end
 							}
+							temp = gets
+							temp = temp.to_s
+							temp.strip!
+							flag_saida = 0
 						end
 						if flag_saida == 0
-							valor = calculaValor
-				
-							matricula = matricula.new(codigo,nome,cargahoraria,valor)
-							lista_matriculas << matricula
+							novaMatricula = 0
+							novaMatricula = novaMatricula.initialize(codigo,periodo,alunomatriculado,listaDisciplinas)
+							lista_matriculas << novaMatricula
+							break
 						end
 					end
 				end
-		
+
 			when 3
 				puts "\nAlterar matrícula"
 
 				if (lista_matriculas.to_a.size == 0)
 					puts "Não há matrículas cadastradas."
-				else 
+				else
 					puts "Digite código da matrícula"
 					procura = gets
-		
+
 					lista_matriculas.each{|matricula|
 						if matricula.codigo == procura.to_i
 							puts "\nMatrícula Encontrada!\n"
-		
+
 							puts "\nAlterar matrícula"
 							puts "Digite o código da matrícula"
-							matricula.codigo = gets.to_i
+							this.matricula.codigo = gets.to_i
 							puts "Digite o nome ou RA do aluno da matrícula"
 							procura = gets
 							lista_alunos.each{|aluno|
-									if aluno.nome == procura|| aluno.ra == procura
-										alunomatriculado = this.aluno
+								flag_saida = 0
+								lista_alunos.each{|aluno|
+									if aluno.nome == procura || aluno.ra == procura
+										this.matricula.alunoMatriculado = aluno
+										puts "Aluno encontrado"
+									else
+										puts "Aluno não encontrado. A Matricula não pode ser efetuada."
+										flag_saida = 1
 									end
+								}
 								puts "Digite o período da matrícula"
-								matricula.periodo = gets
+								this.matricula.periodo = gets
+								i = 0
 								puts "Digite o código das disciplinas da matrícula"
 								puts "Digite 0 quando não houverem mais disciplinas"
-								disciplina = gets
+								temp = gets
 								i = 0
-								while(disciplina != '0') do
+								while(temp != "0") do
+									puts "estou no while"
 									lista_disciplinas.each{ |disciplina|
-										if disciplina.codigo == disciplina
-											listaDisciplinas[i] = this.disciplina
-											i = i + 1
+										tmp = disciplina.codigo.to_s
+										tmp.strip!
+										if tmp == temp
+											this.listaDisciplinas[i] = disciplina
+											i += 1
+										else
+											flag_saida = 1
+											puts "Disciplina não encontrada"
+											break
 										end
-			
 									}
+									temp = gets
+									temp = temp.to_s
+									temp.strip!
+									flag_saida = 0
 								end
-			
-								valor = calculaValor
-			
+
 								break
 							}
 						end
 					}
 				end
-		
+
 			when 4
 				puts "\nRemover matrícula"
 				puts "Digite código da matrícula"
 				procura = gets
-	
+
 				begin
 					raise lista_matriculas.delete(matricula)
 					puts "matrícula Removida!\n\n"
 				rescue
 						puts "matrícula não está na lista"
 				end
-	
+
 			when 5
 				puts "\nVoltar"
 			else
 				puts "\nVocê digitou #{menu} -- Esse comando não existe"
 			end
 		end
-	
-	end
+
+end
