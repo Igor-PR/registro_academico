@@ -40,9 +40,12 @@ def menuMatricula(lista_matriculas, lista_disciplinas, lista_alunos, lista_curso
 					puts "Digite o nome ou RA do aluno da matrícula"
 					procura = gets
 					flag_saida = 0
+					alunomatriculado = [0]
 					lista_alunos.each{|aluno|
 						if aluno.nome == procura || aluno.ra == procura
+							alunomatriculado = aluno
 							puts "Aluno encontrado"
+
 						else
 							puts "Aluno não encontrado. A Matricula não pode ser efetuada."
 							flag_saida = 1
@@ -53,24 +56,33 @@ def menuMatricula(lista_matriculas, lista_disciplinas, lista_alunos, lista_curso
 						periodo = gets
 						puts "Digite o código das disciplinas da matrícula"
 						puts "Digite 0 quando não houverem mais disciplinas"
-						disciplina = gets
+						temp = gets
 						i = 0
-						while(disciplina != '0') do
-							lista_disciplinas.each{
-								if this.disciplina.codigo == disciplina
-									listaDisciplinas[i] = this.disciplina
+						listaDisciplinas = [0]
+						while(temp != "0") do
+							puts "estou no while"
+							lista_disciplinas.each{ |disciplina|
+								tmp = disciplina.codigo.to_s
+								tmp.strip!
+								if tmp == temp
+									listaDisciplinas[i] = disciplina
 									i += 1
 								else
 									flag_saida = 1
+									puts "Disciplina não encontrada"
 									break
 								end
 							}
+							temp = gets
+							temp = temp.to_s
+							temp.strip!
+							flag_saida = 0
 						end
 						if flag_saida == 0
-							valor = calculaValor
-
-							matricula = matricula.new(codigo,periodo,aluno,listaDisciplinas)
-							lista_matriculas << matricula
+							novaMatricula = 0
+							novaMatricula = novaMatricula.initialize(codigo,periodo,alunomatriculado,listaDisciplinas)
+							lista_matriculas << novaMatricula
+							break
 						end
 					end
 				end
@@ -90,30 +102,46 @@ def menuMatricula(lista_matriculas, lista_disciplinas, lista_alunos, lista_curso
 
 							puts "\nAlterar matrícula"
 							puts "Digite o código da matrícula"
-							matricula.codigo = gets.to_i
+							this.matricula.codigo = gets.to_i
 							puts "Digite o nome ou RA do aluno da matrícula"
 							procura = gets
 							lista_alunos.each{|aluno|
-									if aluno.nome == procura|| aluno.ra == procura
-										alunomatriculado = this.aluno
+								flag_saida = 0
+								lista_alunos.each{|aluno|
+									if aluno.nome == procura || aluno.ra == procura
+										this.matricula.alunoMatriculado = aluno
+										puts "Aluno encontrado"
+									else
+										puts "Aluno não encontrado. A Matricula não pode ser efetuada."
+										flag_saida = 1
 									end
+								}
 								puts "Digite o período da matrícula"
-								matricula.periodo = gets
+								this.matricula.periodo = gets
+								i = 0
 								puts "Digite o código das disciplinas da matrícula"
 								puts "Digite 0 quando não houverem mais disciplinas"
-								disciplina = gets
+								temp = gets
 								i = 0
-								while(disciplina != '0') do
+								while(temp != "0") do
+									puts "estou no while"
 									lista_disciplinas.each{ |disciplina|
-										if disciplina.codigo == disciplina
-											listaDisciplinas[i] = this.disciplina
-											i = i + 1
+										tmp = disciplina.codigo.to_s
+										tmp.strip!
+										if tmp == temp
+											this.listaDisciplinas[i] = disciplina
+											i += 1
+										else
+											flag_saida = 1
+											puts "Disciplina não encontrada"
+											break
 										end
-
 									}
+									temp = gets
+									temp = temp.to_s
+									temp.strip!
+									flag_saida = 0
 								end
-
-								valor = calculaValor
 
 								break
 							}
@@ -140,4 +168,4 @@ def menuMatricula(lista_matriculas, lista_disciplinas, lista_alunos, lista_curso
 			end
 		end
 
-	end
+end
