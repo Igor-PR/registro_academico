@@ -59,7 +59,7 @@ def menuAluno(lista_alunos, lista_cursos)
 			puts "\nAlterar Aluno"
 			puts "Digite o ra ou nome do aluno"
 			procura = gets
-
+			encontrou = false
 			lista_alunos.each{|aluno|
 				if aluno.nome == procura || aluno.ra == procura
 					puts "\nAluno Encontrada!\n"
@@ -70,8 +70,18 @@ def menuAluno(lista_alunos, lista_cursos)
 					puts "Digite o email"
 					aluno.email = gets
 					puts "Digite o curso do aluno"
-					aluno.curso = gets
+					procura = gets
+					lista_cursos.each { |curso|
+						if curso.nome == procura
+							aluno.curso = curso
+							encontrou = true
+							break
+						end
+					}
 					break
+				end
+				if encontrou == false
+					puts "Aluno nao encontrado."
 				end
 			}
 

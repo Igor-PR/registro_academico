@@ -48,10 +48,11 @@ def removerDisciplina(curso)
     puts "Digite o semestre da disciplina: "
     semestre = gets.to_i - 1 #semestre de 1 a N
     disciplina = Disciplina.new(codigo, nome, 0, 0)
-    it = curso.disciplinas[semestre].delete(disciplina)
-    if it.class == NilClass
+    begin
+        it = curso.disciplinas[semestre].delete(disciplina) { raise NotFoundError.new }
+    rescue NotFoundError => e
         puts "Disciplina não encontrada!"
-    else
+    else 
         puts "Disciplina excluída."
     end
 end
@@ -60,10 +61,8 @@ end
 def procuraDisciplina(item)
     ret = Registro.new(-1, -1) #gambiarra, nao existe operador para x == nil
     $lista_disciplinas.each { |disciplina|
-        puts disciplina.codigo == item.codigo && disciplina.nome == item.nome
         if item == disciplina
 			ret = disciplina
-            puts "trem"
 			break
 		end
 	}
